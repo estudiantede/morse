@@ -79,7 +79,7 @@ const tabla_de_texto_a_morse = {
     " "   :   '   '
 }
 
-function convertir_caracter_a_morse(caracter) {
+ function convertir_caracter_a_morse(caracter) {
     let res = tabla_de_texto_a_morse[caracter]
     if (res == undefined) {
         return ""
@@ -89,7 +89,7 @@ function convertir_caracter_a_morse(caracter) {
     }
 }
 
-function eliminar_ultimo_caracter_de_string(string) {
+ function eliminar_ultimo_caracter_de_string(string) {
     return string.substring(0, string.length - 1)
 }
 
@@ -103,7 +103,7 @@ function eliminar_ultimo_caracter_de_string(string) {
  * }
  */
 
-function traductor_desde_morse_a_texto(texto_morse_a_traducir) {
+ function traductor_desde_morse_a_texto(texto_morse_a_traducir) {
     //Creación de variables
     let res = ""
     let lista_de_palabras_separadas = separar_texto_morse_en_palabras_en_morse(texto_morse_a_traducir)
@@ -124,7 +124,7 @@ function traductor_desde_morse_a_texto(texto_morse_a_traducir) {
  *          y el resto, como el resto de la division
  * }
  */
-function separar_texto_morse_en_palabras_en_morse(texto_morse_a_separar) {
+ function separar_texto_morse_en_palabras_en_morse(texto_morse_a_separar) {
     let res = []
     let es_espacio = false
     let cantidad_espacios = 0
@@ -175,7 +175,7 @@ function separar_texto_morse_en_palabras_en_morse(texto_morse_a_separar) {
  *      Asegura: Devuelve las posiciones donde los espacios se encuentran
  * }
  */
-function buscar_espacios_en_texto(texto_morse_a_buscar_espacios) {
+ function buscar_espacios_en_texto(texto_morse_a_buscar_espacios) {
     let res = []
 
     for(let i = 0; i < texto_morse_a_buscar_espacios.length; i++) {
@@ -194,7 +194,7 @@ function buscar_espacios_en_texto(texto_morse_a_buscar_espacios) {
  * }
  */
 
-const tabla_de_morse_a_texto = {
+ const tabla_de_morse_a_texto = {
     "._"    : 'A',
     "_..."  : 'B',
     "_._."  : 'C',
@@ -254,3 +254,8 @@ function convertir_morse_a_caracter(secuencia_en_morse) {
     if (res == undefined) return ""
     return res
 }
+
+module.exports = {
+    traductor_desde_texto_a_morse,
+    traductor_desde_morse_a_texto,
+ }
