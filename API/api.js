@@ -131,37 +131,40 @@ const tabla_de_texto_a_morse = {
 
     for (let i = 0; i < texto_morse_a_separar.length; i++) {
         let letra_en_posicion_i = texto_morse_a_separar.charAt(i)
+        if(letra_en_posicion_i == '\n') {
+            continue
+        } else {
+            if (es_espacio == true && letra_en_posicion_i === " ") {
 
-        if (es_espacio == true && letra_en_posicion_i === " ") {
-
-            //Si ya había 3 espacios, entonces poner el nuevo espacio en otra ubicacion
-            if (cantidad_espacios >= 3) {
+                //Si ya había 3 espacios, entonces poner el nuevo espacio en otra ubicacion
+                if (cantidad_espacios >= 3) {
+                    cantidad_espacios = 1
+                    res.push(" ")
+                }
+                else {
+                    res[res.length - 1] += " "
+                    cantidad_espacios += 1
+                }
+            } 
+            else if (es_espacio == true && letra_en_posicion_i !== " ") {
+                es_espacio = false
+                cantidad_espacios = 0
+                res.push(letra_en_posicion_i)
+            }
+            else if (es_espacio == false && letra_en_posicion_i === " ") {
+                es_espacio = true
                 cantidad_espacios = 1
                 res.push(" ")
             }
-            else {
-                res[res.length - 1] += " "
-                cantidad_espacios += 1
+            else if (es_espacio == false && letra_en_posicion_i !== " ") {
+                if (res.length == 0) {
+                    res.push(letra_en_posicion_i)
+                }
+                else {
+                    res[res.length - 1] += letra_en_posicion_i
+                }
+                cantidad_espacios = 0
             }
-        } 
-        else if (es_espacio == true && letra_en_posicion_i !== " ") {
-            es_espacio = false
-            cantidad_espacios = 0
-            res.push(letra_en_posicion_i)
-        }
-        else if (es_espacio == false && letra_en_posicion_i === " ") {
-            es_espacio = true
-            cantidad_espacios = 1
-            res.push(" ")
-        }
-        else if (es_espacio == false && letra_en_posicion_i !== " ") {
-            if (res.length == 0) {
-                res.push(letra_en_posicion_i)
-            }
-            else {
-                res[res.length - 1] += letra_en_posicion_i
-            }
-            cantidad_espacios = 0
         }
     }
     
@@ -199,7 +202,7 @@ const tabla_de_texto_a_morse = {
     "_..."  : 'B',
     "_._."  : 'C',
     "_.."   : 'D',
-    "."    : 'E',
+    "."     : 'E',
     ".._."  : 'F',
     "__."   : 'G',
     "...."  : 'H',

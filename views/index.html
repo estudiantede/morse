@@ -7,7 +7,7 @@
         <title>Código morse</title>
         <meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
         <link rel="stylesheet" type="text/css" href="./style.css">
-        <script src="./index.js"></script>
+        <script src="./js.js"></script>
     </head>
 
     <!-- Cuerpo del html --> 
@@ -317,20 +317,24 @@
 
                 </article>
                 <section>
+                    <h3>Para traducir desde texto a morse</h3>
                     <form action="/api/texto_a_morse" method="post">
-                        <textarea name="texto">
+                        <textarea name="texto" id="texto_a_traducir">
 
                         </textarea>
                     </form>
-                    <button id="texto_a_morse">Traducir a texto</button>
+                    <button id="texto_a_morse" onclick="traducir_desde_texto_a_morse()">Traducir a texto</button>
 
+                    <h3>Para traducir desde morse a texto</h3>
                     <form action="/api/morse_a_texto" method="post">
-                        <textarea name="texto">
+                        <textarea name="texto" id="morse_a_traducir">
 
                         </textarea>
                     </form>
-                    <button id="morse_a_texto">Traducir a texto</button>
+                    <button id="morse_a_texto" onclick="traducir_desde_morse_a_texto()">Traducir a texto</button>
                 </section>
+
+                <h3 id = "demo"></h3>
             </main>
             <!-- Pie de página del html. Acá van a ir créditos y alguna red social --> 
             <footer>
